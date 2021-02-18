@@ -8,6 +8,7 @@ public class LoadZone : MonoBehaviour
     {
         if(collision.gameObject.tag == "Player")
         {
+            Debug.Log("Load...");
             FindObjectOfType<GameManager>().loadNextLevel();
         }
     }

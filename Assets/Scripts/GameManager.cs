@@ -37,10 +37,18 @@ public class GameManager : MonoBehaviour
 
     public void Restart()
     {
-        GameOverText.SetActive(false);
-        SceneManager.LoadScene("Level_1");
-        FindObjectOfType<Enemy>().shootDelay(1f);
-        Time.timeScale = 1f;
+        if(SceneManager.GetActiveScene().name == "Test_Level")
+        {
+            SceneManager.LoadScene("Test_Level");
+            Time.timeScale = 1f;
+        }
+        else
+        {
+            GameOverText.SetActive(false);
+            SceneManager.LoadScene("Level_1");
+            FindObjectOfType<Enemy>().shootDelay(1f);
+            Time.timeScale = 1f;
+        }
     }
 
     public void Enemies()
@@ -51,6 +59,10 @@ public class GameManager : MonoBehaviour
     public void loadNextLevel()
     {
         FindObjectOfType<PlayerMovement>().resetPos();
-        SceneManager.LoadScene("Level_" + ++levelNum);
+
+        if(SceneManager.GetActiveScene().name == "Test_Level")
+            SceneManager.LoadScene("Test_Level");
+        else
+            SceneManager.LoadScene("Level_" + ++levelNum);
     }
 }

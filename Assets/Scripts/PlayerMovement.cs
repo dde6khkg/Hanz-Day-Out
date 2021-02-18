@@ -10,22 +10,20 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D rb;
     public Animator animator;
     Vector2 movement;
-    Vector2 startPosition;
     //Shooting
     Camera cam;
     Vector2 mousePos;
     public Rigidbody2D fp;
     //Health
-    public int maxHealth = 4;
+    static int maxHealth = 4;
     public int currentHealth;
     public HealthBar healthBar;
+    public GameObject canvas;
 
     // Start is called before the first frame update
     void Start()
     {
         cam = Camera.main;
-
-        startPosition = rb.position;
 
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
@@ -88,13 +86,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake() 
     {
-        DontDestroyOnLoad (Player);
-        DontDestroyOnLoad (Camera.main);
-        //
+        DontDestroyOnLoad(Player);
+        DontDestroyOnLoad(Camera.main);
+        DontDestroyOnLoad(canvas);
     }
 
     public void resetPos()
     {
-        rb.position = new Vector2(0f, -4.5f);
+        rb.position = new Vector2(0f, -4.9f);
     }
 }
