@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
+    private GameObject bullet;
     public Transform firePoint;
     public GameObject bulletPrefab;
+    public GameObject missilePrefab;
     public float bulletForce = 5f;
     public Camera cam;
     Vector3 mousePos;
@@ -13,6 +15,7 @@ public class Shooting : MonoBehaviour
     float nextFire;
     public float fireRate = .5f;
     GameObject Bullets;
+    public string Weapon;
 
     void Start()
     {
@@ -39,7 +42,17 @@ public class Shooting : MonoBehaviour
 
     void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+
+        if (Weapon == "Missile_Launcher")
+        {
+            bullet = Instantiate(missilePrefab, firePoint.position, firePoint.rotation) ;
+            bulletForce = 50f ;
+        }
+        else
+        {
+            bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bulletForce = 5f;
+        }
         Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         //Physics2D.IgnoreCollision(Bullets.GetComponent<Collider2D>(), GetComponent<Collider2D>()); //Ignore all bullets
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
