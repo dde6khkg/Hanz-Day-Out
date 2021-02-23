@@ -10,11 +10,12 @@ public class Enemy : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform firePoint;
     public float bulletForce = 6f;
-    float fireRate = 1.1f;
+    public float fireRate;
     float nextFire;
     public Rigidbody2D rb;
     public Rigidbody2D fp;
     Rigidbody2D Target;
+    public int pelletCount = 4;
     //Moving
     float nextMove;
     public Animator animator;
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
         fp.position = new Vector2(rb.position.x, rb.position.y + .4f);
         Vector2 shootDir = tarPos - firePoint.position;
 
-        if(Time.time > nextFire)
+        if(Time.time > nextFire && enemy.name[6] == '1')
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
@@ -48,6 +49,22 @@ public class Enemy : MonoBehaviour
 
             rbB.velocity = new Vector2(shootDir.x, shootDir.y).normalized * bulletForce;
             
+            nextFire = Time.time + fireRate;
+        }
+        if(Time.time > nextFire && enemy.name[6] == '2')
+        {
+            for(int i = 0; i < pelletCount ; i++)
+            {
+                GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), FindObjectOfType<Enemy>().GetComponent<Collider2D>());
+
+                Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
+                
+                Destroy(bullet, 4f);
+
+                rbB.velocity = new Vector2(shootDir.x + Random.Range(-3,3), shootDir.y + Random.Range(-3,3)).normalized * bulletForce;
+            }
+
             nextFire = Time.time + fireRate;
         }
 

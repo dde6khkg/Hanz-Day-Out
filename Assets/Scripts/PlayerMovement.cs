@@ -79,7 +79,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            Debug.Log("Dead...");
             Destroy(Player);
+            Destroy(canvas);
             FindObjectOfType<GameManager>().EndGame();
         }
     }
@@ -94,5 +96,11 @@ public class PlayerMovement : MonoBehaviour
     public void resetPos()
     {
         rb.position = new Vector2(0f, -4.9f);
+    }
+
+    public void Destroy()
+    {
+        Destroy(Player);
+        Destroy(canvas);
     }
 }

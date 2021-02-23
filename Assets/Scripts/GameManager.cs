@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     bool GameEnded = false;
-    public float restartDelay = 3f;
+    public float restartDelay = 2f;
     public GameObject GameOverText;
     //Next Room
     int enemiesLeft;
     public GameObject door;
-    int levelNum = 1;
     int health;
 
 
@@ -29,25 +31,10 @@ public class GameManager : MonoBehaviour
         if(GameEnded == false)
         {
             GameEnded = true;
-            GameOverText.SetActive(true);
+            //GameOverText.SetActive(true);
 
-            Invoke("Restart", restartDelay);
-        }
-    }
-
-    public void Restart()
-    {
-        if(SceneManager.GetActiveScene().name == "Test_Level")
-        {
-            SceneManager.LoadScene("Test_Level");
-            Time.timeScale = 1f;
-        }
-        else
-        {
-            GameOverText.SetActive(false);
-            SceneManager.LoadScene("Level_1");
-            FindObjectOfType<Enemy>().shootDelay(1f);
-            Time.timeScale = 1f;
+            Time.timeScale = 1;
+            StartCoroutine(Restart(restartDelay));
         }
     }
 
@@ -58,11 +45,41 @@ public class GameManager : MonoBehaviour
 
     public void loadNextLevel()
     {
+        var rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
+        if(rng == SceneManager.GetActiveScene().name[6])
+            rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
+        if(rng == SceneManager.GetActiveScene().name[6])
+            rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
+
         FindObjectOfType<PlayerMovement>().resetPos();
 
         if(SceneManager.GetActiveScene().name == "Test_Level")
             SceneManager.LoadScene("Test_Level");
         else
-            SceneManager.LoadScene("Level_" + ++levelNum);
+        {
+            SceneManager.LoadScene(rng);
+        }
+    }
+
+    public IEnumerator Restart(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        GameEnded = false;
+
+        if(SceneManager.GetActiveScene().name == "Test_Level")
+        {
+            //GameOverText.SetActive(false);
+            SceneManager.LoadScene("Test_Level");
+            Time.timeScale = 1;
+        }
+        else
+        {
+            Debug.Log("Restart...");
+            //GameOverText.SetActive(false);
+            SceneManager.LoadScene("Level_1");
+            FindObjectOfType<Enemy>().shootDelay(1f);
+            Time.timeScale = 1;
+        }
     }
 }

@@ -174,7 +174,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.011129081, y: 0.6938754}
+  m_Offset: {x: 0.011129081, y: 0.6828867}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.1}
@@ -185,7 +185,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8772297, y: 1.4292318}
+  m_Size: {x: 0.8772297, y: 1.4072545}
   m_EdgeRadius: 0
 --- !u!114 &2742100888439463946
 MonoBehaviour:
@@ -241,6 +241,8 @@ MonoBehaviour:
   firePoint: {fileID: 2742100887363741699}
   bulletPrefab: {fileID: 5669240626129318047, guid: 5025f232fde649e4382780ab672c13dc,
     type: 3}
+  missilePrefab: {fileID: 0}
   bulletForce: 8
   cam: {fileID: 0}
   fireRate: 1
+  Weapon: 
