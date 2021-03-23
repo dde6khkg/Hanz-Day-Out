@@ -33,7 +33,6 @@ public class Missile : MonoBehaviour
         }
         MissileExplode();
 
-
         Destroy(gameObject);
     }
 
