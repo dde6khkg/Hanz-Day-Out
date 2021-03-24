@@ -53,7 +53,7 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             bulletForce = 5f;
         }
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        //Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Rigidbody2D rb = bullet.GetComponent<Rigidbody2D>();
 
         rb.velocity = new Vector2(shootDir.x, shootDir.y).normalized * bulletForce;

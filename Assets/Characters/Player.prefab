@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2742100887363741699}
   - component: {fileID: 2742100887363741698}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: FirePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +67,7 @@ GameObject:
   - component: {fileID: 2742100888439463946}
   - component: {fileID: 2742100888439463947}
   - component: {fileID: 2742100888439463944}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -243,6 +243,5 @@ MonoBehaviour:
     type: 3}
   missilePrefab: {fileID: 0}
   bulletForce: 8
-  cam: {fileID: 0}
   fireRate: 1
   Weapon: 
