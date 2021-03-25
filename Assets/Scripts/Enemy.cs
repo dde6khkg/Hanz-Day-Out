@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
         shootDelay(Random.Range(.75f, 1.1f));
         nextMove = Random.Range(2f, 3f);
 
-        Target = FindObjectOfType<PlayerMovement>().GetComponent<Rigidbody2D>();
+        Target = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
     }
     void FixedUpdate()
     {

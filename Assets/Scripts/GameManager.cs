@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 2f;
     public GameObject GameOverText;
     //Next Room
-    int enemiesLeft;
+    public int enemiesLeft;
     public GameObject door;
     int health;
 

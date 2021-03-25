@@ -5,13 +5,11 @@ using UnityEngine;
 using UnityEngine.TestTools;
 using UnityEngine.SceneManagement;
 
-
 namespace Tests
 {
     public class Some_test
     {
         GameObject bulletPrefab = Resources.Load("Bullet_Y") as GameObject;
-        Shooting shooting;
 
         [SetUp]
         public void Setup()
