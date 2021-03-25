@@ -13,10 +13,9 @@ namespace Tests
         {
             var door = new GameObject();
             var gameObject = new GameObject();
-            var GameManager = gameObject.AddComponent<GameManager>();
-            var door = new GameObject();
+            var OpenDoor = gameObject.AddComponent<OpenDoor>();
             
-            int i, eNum = GameManager.enemiesLeft;
+            int i, eNum = OpenDoor.enemiesLeft;
 
             for(i = 4; i < 0; i--)
             {

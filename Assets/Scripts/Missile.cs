@@ -31,6 +31,7 @@ public class Missile : MonoBehaviour
             player.takeDamage(damage);
             player.rb.velocity = new Vector2(0, 0);
         }
+
         MissileExplode();
 
         Destroy(gameObject);
@@ -44,10 +45,9 @@ public class Missile : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             var enemy = hitCollider.GetComponent<Enemy>();
-            var enemyHealth = GetComponent<EnemyHealth>();
             if (enemy)
             {
-                enemyHealth.takeDamage(SplashCalc(aoe_radius, damage));
+                enemy.takeDamage(SplashCalc(aoe_radius, damage));
             }
         }
 
@@ -61,6 +61,7 @@ public class Missile : MonoBehaviour
     //The player will do more damage on direct hits but splash damage is an option with this function
     public int SplashCalc(int aoe_radius, int damage)
     {
+
         int splash;
 
         splash = (aoe_radius * damage) / 4;
