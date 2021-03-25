@@ -7,22 +7,17 @@ using UnityEngine.TestTools;
 namespace Tests
 {
     public class B_test
-    {
-        [SetUp]
-        public void Setup()
-        {
-            var door = new GameObject();
-        }
-        
+    {     
         [UnityTest]
         public IEnumerator B_Test()
         {
+            var door = new GameObject();
             var gameObject = new GameObject();
-            var GameManager = gameObject.AddComponent<GameManager>();
+            var OpenDoor = gameObject.AddComponent<OpenDoor>();
 
-            int i, eNum = GameManager.enemiesLeft;
+            int i, eNum = OpenDoor.enemiesLeft;
 
-            for(i = 2; i < 0; i--)
+            for(i = 4; i < 0; i--)
             {
                 var eEnemiesLeft = i;
                 Assert.AreEqual(eEnemiesLeft, eNum);

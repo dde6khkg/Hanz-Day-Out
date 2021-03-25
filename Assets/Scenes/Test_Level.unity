@@ -1824,6 +1824,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartDelay: 2
   GameOverText: {fileID: 92838723}
+  noEnemies: 0
   door: {fileID: 925114241}
 --- !u!1 &1600611461
 GameObject:

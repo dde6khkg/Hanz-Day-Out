@@ -10,20 +10,14 @@ public class GameManager : MonoBehaviour
     public float restartDelay = 2f;
     public GameObject GameOverText;
     //Next Room
-    public int enemiesLeft;
+    public bool noEnemies = false;
+    OpenDoor open;
     public GameObject door;
-    int health;
-
 
     void FixedUpdate()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        enemiesLeft = enemies.Length;
-
-        if(enemiesLeft == 0)
-        {
+        if(noEnemies == true)
             door.SetActive(false);
-        }
     }
 
     public void EndGame()
@@ -38,11 +32,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void Enemies()
-    {
-        enemiesLeft--;
-    }
-
     public void loadNextLevel()
     {
         var rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
@@ -52,6 +41,8 @@ public class GameManager : MonoBehaviour
             rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
 
         FindObjectOfType<PlayerMovement>().resetPos();
+
+        noEnemies = false;
 
         if(SceneManager.GetActiveScene().name == "Test_Level")
             SceneManager.LoadScene("Test_Level");
