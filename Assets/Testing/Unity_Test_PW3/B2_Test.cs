@@ -8,19 +8,11 @@ namespace Tests
 {
     public class B2_test
     {
-        [SetUp]
-        public void Setup()
-        {
-            var Player = new GameObject();
-            Player.gameObject.tag = "Player";
-            Player.AddComponent<Rigidbody2D>();
-        }
-
         [UnityTest]
         public IEnumerator B2_Test()
         {
             var gameObject = new GameObject();
-            var enemy = gameObject.AddComponent<Enemy>();
+            var enemy = gameObject.AddComponent<EnemyHealth>();
 
             int i, Health = enemy.currentHealth;
 

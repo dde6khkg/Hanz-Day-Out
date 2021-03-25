@@ -23,7 +23,7 @@ public class Missile : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
+            collision.gameObject.GetComponent<EnemyHealth>().takeDamage(damage);
             collision.gameObject.GetComponent<Enemy>().rb.velocity = new Vector2(0, 0);
         }
         if (collision.gameObject.tag == "Player")
@@ -44,9 +44,10 @@ public class Missile : MonoBehaviour
         foreach (var hitCollider in hitColliders)
         {
             var enemy = hitCollider.GetComponent<Enemy>();
+            var enemyHealth = GetComponent<EnemyHealth>();
             if (enemy)
             {
-                enemy.takeDamage(SplashCalc(aoe_radius, damage));
+                enemyHealth.takeDamage(SplashCalc(aoe_radius, damage));
             }
         }
 

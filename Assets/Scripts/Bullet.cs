@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour
         
         if(collision.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
+            collision.gameObject.GetComponent<EnemyHealth>().takeDamage(damage);
             collision.gameObject.GetComponent<Enemy>().rb.velocity = new Vector2(0,0);
         }
         if(collision.gameObject.tag == "Player")

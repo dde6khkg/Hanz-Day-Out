@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public int currentHealth = 4;
+    public int currentHealth;
     public GameObject enemy;
     //Shooting
     public GameObject bulletPrefab;
@@ -88,15 +88,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void takeDamage(int damage)
-    {
-        currentHealth -= damage;
-
-        if(currentHealth <= 0)
-        {
-            Destroy(enemy);
-        }
-    }
+    
 
     public IEnumerator stopMoving(float delay)
     {
@@ -107,5 +99,10 @@ public class Enemy : MonoBehaviour
     public void shootDelay(float delay)
     {
         nextFire = delay + Time.time;
+    }
+
+    public void die()
+    {
+        Destroy(enemy);
     }
 }

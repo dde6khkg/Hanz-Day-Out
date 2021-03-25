@@ -1982,6 +1982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 881587383}
   - component: {fileID: 881587382}
+  - component: {fileID: 881587384}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2003,6 +2004,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartDelay: 2
   GameOverText: {fileID: 693628498}
+  noEnemies: 0
   door: {fileID: 1277735808}
 --- !u!4 &881587383
 Transform:
@@ -2018,6 +2020,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &881587384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 881587381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c36fef4a1f15a74aa5b213725b5a5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemiesLeft: 0
 --- !u!1 &881738057
 GameObject:
   m_ObjectHideFlags: 0

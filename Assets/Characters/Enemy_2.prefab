@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 141810066407218297}
   - component: {fileID: 141810066407218298}
   - component: {fileID: 869802845273740503}
+  - component: {fileID: -974615308141955883}
   m_Layer: 10
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63fef3dd9dafbc043b09073881c5a325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 3
+  currentHealth: 4
   enemy: {fileID: 141810066407218292}
   bulletPrefab: {fileID: 6290190800206824031, guid: 77ffdc5e2087f98479cca85b68ec9a56,
     type: 3}
@@ -176,6 +177,19 @@ MonoBehaviour:
   fp: {fileID: 0}
   pelletCount: 4
   animator: {fileID: 141810066407218298}
+--- !u!114 &-974615308141955883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141810066407218292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa949e8c6f36fc44a4c95f50b148757, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 4
 --- !u!1 &141810067153434151
 GameObject:
   m_ObjectHideFlags: 0
