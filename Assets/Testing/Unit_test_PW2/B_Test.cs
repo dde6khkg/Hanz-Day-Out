@@ -8,12 +8,17 @@ namespace Tests
 {
     public class B_test
     {
+        [SetUp]
+        public void Setup()
+        {
+            var door = new GameObject();
+        }
+        
         [UnityTest]
         public IEnumerator B_Test()
         {
             var gameObject = new GameObject();
             var GameManager = gameObject.AddComponent<GameManager>();
-            var door = new GameObject();
 
             int i, eNum = GameManager.enemiesLeft;
 
