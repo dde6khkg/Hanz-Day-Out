@@ -105,4 +105,14 @@ public class Enemy : MonoBehaviour
     {
         Destroy(enemy);
     }
+
+    public void takeDamage(int damage)
+    {
+        currentHealth -= damage;
+
+        if(currentHealth <= 0)
+        {
+            GetComponent<Enemy>().die();
+        }
+    }
 }
