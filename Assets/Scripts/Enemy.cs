@@ -109,4 +109,9 @@ public class Enemy : MonoBehaviour
     {
         nextFire = delay + Time.time;
     }
+
+    public void die()
+    {
+        Destroy(enemy);
+    }
 }
