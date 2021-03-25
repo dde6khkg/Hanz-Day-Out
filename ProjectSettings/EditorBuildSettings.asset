@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_5.unity
     guid: 9e1f880dfb0dd3b469d9710a4be75ebe
+  - enabled: 1
+    path: Assets/Scenes/Stress_Test_Level.unity
+    guid: 47da2ab0db5ebc148884467328338956
   m_configObjects: {}
