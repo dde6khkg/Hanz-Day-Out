@@ -23,7 +23,7 @@ namespace Tests
         [Timeout(1875)]
         public IEnumerator Some_Test()
         {
-            int i, bulletAmount = 1100;
+            int i, bulletAmount = 1159;
 
            for(i = 0; i < bulletAmount; i++)
             {
