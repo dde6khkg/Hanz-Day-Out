@@ -12,7 +12,7 @@ namespace Tests
         public IEnumerator B2_Test()
         {
             var gameObject = new GameObject();
-            var enemy = gameObject.AddComponent<EnemyHealth>();
+            var enemy = gameObject.AddComponent<Enemy>();
 
             int i, Health = enemy.currentHealth;
 
