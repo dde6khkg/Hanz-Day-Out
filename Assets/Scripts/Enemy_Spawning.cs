@@ -9,7 +9,7 @@ public class Enemy_Spawning : MonoBehaviour
     public int count = 0;
     void Start()
     {
-        InvokeRepeating("Spawn", 1f, 0.5f); //.5 second delay per use
+        InvokeRepeating("Spawn", 1f, 1f); //1 second delay per use
     }
 
     // Update is called once per frame
