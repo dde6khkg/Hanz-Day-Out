@@ -7,9 +7,9 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
 
-    // Update is called once per frame
     void Update()
     {
+        //On Escape press
         if(Input.GetButtonDown("Cancel"))
         {
             if(Time.timeScale == 0f)

@@ -2667,8 +2667,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d213d2b196e84af47b54a0d7faa2224d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  restartDelay: 2
   GameOver: {fileID: 1402785130}
+  BText: {fileID: 0}
   enemiesLeft: 0
   door: {fileID: 925114241}
 --- !u!1 &1600611461

@@ -35,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        //Animation
         if(Time.timeScale == 1)
         {
             animator.SetFloat("Horizontal", movement.x);
@@ -53,10 +54,10 @@ public class PlayerMovement : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Test
-        //if(Input.GetButtonDown("Jump"))
-        //{
-            //takeDamage(1);
-        //}
+        if(Input.GetButtonDown("Jump"))
+        {
+            takeDamage(1);
+        }
     }
 
     void FixedUpdate()
@@ -72,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         fp.rotation = angle;
     }
 
-        public void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);

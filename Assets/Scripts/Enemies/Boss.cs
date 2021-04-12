@@ -10,6 +10,7 @@ public class Boss : Enemy
     //Shooting
     int shotType;
 
+//Signleton
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -24,6 +25,7 @@ public class Boss : Enemy
     {
         nextMove = Time.time + Random.Range(.75f, 1.75f);;
 
+        //Set direction for moving and time to move
         rb.velocity = dir(-5f, 5f);
         StartCoroutine(stopMoving(Random.Range(.4f, .7f)));
     }
@@ -35,8 +37,8 @@ public class Boss : Enemy
         if(shotType == 1)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
+
             Destroy(bullet, 4f);
 
             rbB.velocity = new Vector2(lookDir.x, lookDir.y).normalized * bulletForce;
@@ -50,8 +52,6 @@ public class Boss : Enemy
             for(int i = 0; i < 4 ; i++)
             {
                 GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-                Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), FindObjectOfType<Enemy>().GetComponent<Collider2D>());
-
                 Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
                 
                 Destroy(bullet, 4f);
@@ -59,7 +59,7 @@ public class Boss : Enemy
                 rbB.velocity = new Vector2(lookDir.x + Random.Range(-3,3), lookDir.y + Random.Range(-3,3)).normalized * bulletForce;
             }
 
-            nextFire = Time.time + 1.75f;
+            nextFire = Time.time + 1.25f;
             bulletPrefab.transform.localScale = new Vector2(1f, 1f);
         }
         else if(shotType == 3)
@@ -67,13 +67,13 @@ public class Boss : Enemy
             bulletPrefab.transform.localScale = new Vector2(3.5f, 3.5f);
 
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
             Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
+
             Destroy(bullet, 7f);
 
-            rbB.velocity = new Vector2(lookDir.x, lookDir.y).normalized * (bulletForce - 5f);
+            rbB.velocity = new Vector2(lookDir.x, lookDir.y).normalized * (bulletForce - 7f);
             
-            nextFire = Time.time + 1.5f;
+            nextFire = Time.time + 1.2f;
             bulletPrefab.transform.localScale = new Vector2(1f, 1f);
         }
     }

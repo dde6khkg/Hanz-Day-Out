@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 {
     bool GameEnded = false;
     public GameObject GameOver;
+    public GameObject BText;
     //Next Room
     public int enemiesLeft;
     public GameObject door;
@@ -33,6 +34,11 @@ public class GameManager : MonoBehaviour
             Time.timeScale = 0;
 
             GameOver.SetActive(true);
+            
+            if(PlayerPrefs.GetInt("1") == 1)
+                BText.SetActive(true);
+
+            PlayerPrefs.DeleteAll();
         }
     }
 
@@ -62,7 +68,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         GameEnded = false;
-
+        
         if(SceneManager.GetActiveScene().name == "Test_Level")
         {
             SceneManager.LoadScene("Test_Level");
@@ -72,7 +78,10 @@ public class GameManager : MonoBehaviour
         {
             Debug.Log("Restart...");
             SceneManager.LoadScene("Level_1");
-            FindObjectOfType<Enemy>().shootDelay(1f);
+
+            //Sets shoot delay so enemies don't shoot you when you spawn in
+            FindObjectOfType<Enemy>().shootDelay(Random.Range(1f, 1.25f));
+
             Time.timeScale = 1;
         }
     }
