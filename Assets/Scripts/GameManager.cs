@@ -35,10 +35,8 @@ public class GameManager : MonoBehaviour
 
             GameOver.SetActive(true);
             
-            if(PlayerPrefs.GetInt("1") == 1)
+            if(PlayerPrefs.GetInt("Achievement 1") == 1)
                 BText.SetActive(true);
-
-            PlayerPrefs.DeleteAll();
         }
     }
 
@@ -57,9 +55,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Level_" + r[rng]);
+            SceneManager.LoadScene("Level_Boss");//"Level_" + r[rng]);
 
-            r.RemoveAt(rng);
+            //r.RemoveAt(rng);
         }
     }
 
@@ -68,6 +66,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         GameEnded = false;
+        PlayerPrefs.DeleteAll();
         
         if(SceneManager.GetActiveScene().name == "Test_Level")
         {
