@@ -33,8 +33,10 @@ public class GameManager : MonoBehaviour
             GameEnded = true;
             Time.timeScale = 0;
 
+            //Sets game over menu active
             GameOver.SetActive(true);
             
+            //Checks if you've killed the boss
             if(PlayerPrefs.GetInt("Achievement 1") == 1)
                 BText.SetActive(true);
         }
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
 
     public void loadNextLevel()
     {
+        //Chooses random level from list
         var rng = Random.Range(0, r.Count);
 
         FindObjectOfType<PlayerMovement>().resetPos();
@@ -55,9 +58,9 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("Level_Boss");//"Level_" + r[rng]);
+            SceneManager.LoadScene("Level_" + r[rng]);
 
-            //r.RemoveAt(rng);
+            r.RemoveAt(rng);
         }
     }
 
