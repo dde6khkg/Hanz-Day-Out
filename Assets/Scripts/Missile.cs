@@ -51,8 +51,8 @@ public class Missile : MonoBehaviour
         }
 
         Vector2 Pos = transform.position;
-        Debug.Log(transform.position);
-        Debug.Log("Reached Explosion");
+        //Debug.Log(transform.position);
+        //Debug.Log("Reached Explosion");
 
     }
 

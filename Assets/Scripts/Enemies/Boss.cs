@@ -10,7 +10,7 @@ public class Boss : Enemy
     //Shooting
     int shotType;
 
-//Signleton
+    //Signleton
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -36,6 +36,8 @@ public class Boss : Enemy
 
         if(shotType == 1)
         {
+            bulletPrefab.transform.localScale = new Vector2(1f, 1f);
+
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
             Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
 
@@ -59,8 +61,8 @@ public class Boss : Enemy
                 rbB.velocity = new Vector2(lookDir.x + Random.Range(-3,3), lookDir.y + Random.Range(-3,3)).normalized * bulletForce;
             }
 
-            nextFire = Time.time + 1.25f;
-            bulletPrefab.transform.localScale = new Vector2(1f, 1f);
+            nextFire = Time.time + (fireRate + .35f);
+            
         }
         else if(shotType == 3)
         {
@@ -73,8 +75,7 @@ public class Boss : Enemy
 
             rbB.velocity = new Vector2(lookDir.x, lookDir.y).normalized * (bulletForce - 7f);
             
-            nextFire = Time.time + 1.2f;
-            bulletPrefab.transform.localScale = new Vector2(1f, 1f);
+            nextFire = Time.time + (fireRate + .25f);
         }
     }
 }

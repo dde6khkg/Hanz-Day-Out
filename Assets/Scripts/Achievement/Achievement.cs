@@ -15,11 +15,16 @@ public class Achievement : Observer
     public override void OnNotify(object value)
     {
         string key = "Achievement " + value;
-
-        if(PlayerPrefs.GetInt(key) == 1)
-            return;
         
-        PlayerPrefs.SetInt(key, 1);
-        Debug.Log("Unlocked " + key);
+        if(PlayerPrefs.GetInt("Achievement 1") == 1)
+        {
+            Debug.Log("Here");
+            return;
+        }
+        else
+        {
+            PlayerPrefs.SetInt(key, 1);
+            Debug.Log("Unlocked " + key);
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    bool GameEnded = false;
+    public bool GameEnded = false;
     public GameObject GameOver;
     public GameObject BText;
     //Next Room
@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     public GameObject door;
     static int[] rooms = {2, 3, 4, 5};
     static List<int> r = new List<int>(rooms);
+    static int win = 0;
 
     void FixedUpdate()
     {
@@ -39,6 +40,8 @@ public class GameManager : MonoBehaviour
             //Checks if you've killed the boss
             if(PlayerPrefs.GetInt("Achievement 1") == 1)
                 BText.SetActive(true);
+
+            PlayerPrefs.DeleteAll();
         }
     }
 
@@ -55,11 +58,19 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Level_Boss");
             r = new List<int>(rooms);
+            
+            win++;
+        }
+        else if(win == 2)
+        {
+            win = 0;
+            FindObjectOfType<PlayerMovement>().Destroy();
+            SceneManager.LoadScene("Win");
+            PlayerPrefs.DeleteAll();
         }
         else
         {
             SceneManager.LoadScene("Level_" + r[rng]);
-
             r.RemoveAt(rng);
         }
     }

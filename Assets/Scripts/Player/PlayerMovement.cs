@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject canvas;
+    public bool drbc = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        drbc = false;
         cam = Camera.main;
 
         currentHealth = maxHealth;
@@ -54,10 +56,11 @@ public class PlayerMovement : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Test
-        if(Input.GetButtonDown("Jump"))
-        {
-            takeDamage(1);
-        }
+        //if(Input.GetButtonDown("Jump"))
+        //{
+            //takeDamage(1);
+            //Debug.Log(PlayerPrefs.GetInt("Achievement 1"));
+        //}
     }
 
     void FixedUpdate()
@@ -75,8 +78,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        //Check for drbc mode
+        if(drbc == false)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
 
         if(currentHealth <= 0)
         {
