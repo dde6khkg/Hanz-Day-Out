@@ -4,28 +4,24 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public Rigidbody2D rb;
-    public int damage = 1;
-    PlayerMovement player;
-
-    void Start()
-    {
-        player = FindObjectOfType<PlayerMovement>();
-    }
+    //Damage set on the bullet prefabs to make them do different amounts
+    public int damage;
     
     void OnCollisionEnter2D(Collision2D collision)
     {
+        //Checks to see if the bullet is hitting the enemy or the player
         if(collision.gameObject.tag == "Enemy")
         {
+            //Makes enemy take damage
             collision.gameObject.GetComponent<Enemy>().takeDamage(damage);
-            collision.gameObject.GetComponent<Enemy>().rb.velocity = new Vector2(0,0);
         }
-        if(collision.gameObject.tag == "Player")
+        else if(collision.gameObject.tag == "Player")
         {
-            player.takeDamage(damage);
-            player.rb.velocity = new Vector2(0,0);
+            //Makes the player take damage
+            collision.gameObject.GetComponent<PlayerMovement>().takeDamage(damage);
         }
         
+        //Destroy the gameobject after it hits something
         Destroy(gameObject);
     }
 }

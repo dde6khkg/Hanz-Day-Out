@@ -11,8 +11,6 @@ public class Enemy2 : Enemy
         for(int i = 0; i < pelletCount ; i++)
         {
             GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-            Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), FindObjectOfType<Enemy>().GetComponent<Collider2D>());
-
             Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
                 
             Destroy(bullet, 4f);

@@ -19,10 +19,12 @@ public class PlayerMovement : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     public GameObject canvas;
+    public bool drbc = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        drbc = false;
         cam = Camera.main;
 
         currentHealth = maxHealth;
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+        //Animation
         if(Time.timeScale == 1)
         {
             animator.SetFloat("Horizontal", movement.x);
@@ -56,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
         //if(Input.GetButtonDown("Jump"))
         //{
             //takeDamage(1);
+            //Debug.Log(PlayerPrefs.GetInt("Achievement 1"));
         //}
     }
 
@@ -72,10 +76,14 @@ public class PlayerMovement : MonoBehaviour
         fp.rotation = angle;
     }
 
-        public void takeDamage(int damage)
+    public void takeDamage(int damage)
     {
-        currentHealth -= damage;
-        healthBar.SetHealth(currentHealth);
+        //Check for drbc mode
+        if(drbc == false)
+        {
+            currentHealth -= damage;
+            healthBar.SetHealth(currentHealth);
+        }
 
         if(currentHealth <= 0)
         {

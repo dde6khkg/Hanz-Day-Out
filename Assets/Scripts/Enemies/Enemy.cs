@@ -68,18 +68,19 @@ public class Enemy : MonoBehaviour
     public virtual void shoot(Vector2 lookDir)
     {
         GameObject bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
-        Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
         Rigidbody2D rbB = bullet.GetComponent<Rigidbody2D>();
+
         Destroy(bullet, 4f);
 
         rbB.velocity = new Vector2(lookDir.x, lookDir.y).normalized * bulletForce;
-            
+        
         nextFire = Time.time + fireRate;
     }
     public virtual void move()
     {
-        nextMove = Time.time + Random.Range(2f, 5f);;
+        nextMove = Time.time + Random.Range(2f, 3.5f);
 
+        //Set direction for moving and time to move
         rb.velocity = dir(-4f, 4f);
         StartCoroutine(stopMoving(Random.Range(.2f, .5f)));
     }
@@ -108,7 +109,9 @@ public class Enemy : MonoBehaviour
 
         if(currentHealth <= 0)
         {
-            GetComponent<Enemy>().die();
+            Enemy_Drops sn = enemy.GetComponent<Enemy_Drops>();
+            sn.Dropitem();
+            Destroy(enemy);
         }
     }
 }

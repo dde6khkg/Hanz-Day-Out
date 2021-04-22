@@ -242,6 +242,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 5669240626129318047, guid: 5025f232fde649e4382780ab672c13dc,
     type: 3}
   missilePrefab: {fileID: 0}
-  bulletForce: 8
+  bulletForce: 9
   fireRate: 1
   Weapon: 

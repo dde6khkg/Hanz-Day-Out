@@ -6,11 +6,12 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    PlayerMovement pm;
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetButtonDown("Cancel"))
+        //On Escape press
+        if(Input.GetButtonDown("Cancel") && FindObjectOfType<GameManager>().GameEnded == false)
         {
             if(Time.timeScale == 0f)
             {
@@ -59,5 +60,10 @@ public class PauseMenu : MonoBehaviour
             FindObjectOfType<PlayerMovement>().Destroy();
 
         StartCoroutine(FindObjectOfType<GameManager>().Restart(1f));
+    }
+
+    public void drbcMode()
+    {
+        FindObjectOfType<PlayerMovement>().drbc = true;
     }
 }
