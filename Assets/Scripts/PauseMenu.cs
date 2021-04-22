@@ -39,7 +39,10 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1f;
         Debug.Log("Loading Menu...");
-        FindObjectOfType<PlayerMovement>().Destroy();
+
+        if(FindObjectOfType<PlayerMovement>() != null)
+            FindObjectOfType<PlayerMovement>().Destroy();
+        
         SceneManager.LoadScene(0);
     }
 
@@ -52,8 +55,9 @@ public class PauseMenu : MonoBehaviour
     public void Restart()
     {
         Time.timeScale = 1f;
-        FindObjectOfType<PlayerMovement>().Destroy();
-        StartCoroutine(FindObjectOfType<GameManager>().Restart(1f));
+        if(FindObjectOfType<PlayerMovement>() != null)
+            FindObjectOfType<PlayerMovement>().Destroy();
 
+        StartCoroutine(FindObjectOfType<GameManager>().Restart(1f));
     }
 }

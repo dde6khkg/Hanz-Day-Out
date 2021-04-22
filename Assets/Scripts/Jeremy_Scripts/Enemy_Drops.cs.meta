@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 7d7462c48353b7e4a97f8d4061d7a6cd
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - HealthPrefab: {fileID: 541459143000934241, guid: d81d7242e6e87314ab2d290934f98009,
+      type: 3}
+  - GunPrefab: {fileID: 316186400120179514, guid: b8678f54fe8fdb64a9fd39a2b7393c01,
+      type: 3}
+  - enemy1: {fileID: 1348428681794607264, guid: 4caaefe2fa6f0864aa86cda93a133fb7,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

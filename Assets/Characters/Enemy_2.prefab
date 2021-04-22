@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 141810066407218296}
   - component: {fileID: 141810066407218297}
   - component: {fileID: 141810066407218298}
-  - component: {fileID: 869802845273740503}
-  - component: {fileID: -974615308141955883}
+  - component: {fileID: 7377793893579282367}
+  - component: {fileID: 9164552220087763820}
   m_Layer: 10
   m_Name: Enemy_2
   m_TagString: Enemy
@@ -154,7 +154,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &869802845273740503
+--- !u!114 &7377793893579282367
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -163,21 +163,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 141810066407218292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63fef3dd9dafbc043b09073881c5a325, type: 3}
+  m_Script: {fileID: 11500000, guid: 1976039469baa3d46971905ff2f8ce30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 4
+  currentHealth: 5
   enemy: {fileID: 141810066407218292}
   bulletPrefab: {fileID: 6290190800206824031, guid: 77ffdc5e2087f98479cca85b68ec9a56,
     type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 141810067153434149}
   bulletForce: 4
   fireRate: 2
+  nextFire: 0
   rb: {fileID: 141810066407218296}
-  fp: {fileID: 0}
-  pelletCount: 4
+  fp: {fileID: 141810067153434150}
+  Target: {fileID: 0}
+  nextMove: 0
   animator: {fileID: 141810066407218298}
---- !u!114 &-974615308141955883
+  pelletCount: 4
+--- !u!114 &9164552220087763820
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -186,10 +189,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 141810066407218292}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fa949e8c6f36fc44a4c95f50b148757, type: 3}
+  m_Script: {fileID: 11500000, guid: ed8ba94d0d7919045a51bd99fcb8dd92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentHealth: 4
+  HealthPrefab: {fileID: 541459143000934241, guid: d81d7242e6e87314ab2d290934f98009,
+    type: 3}
+  GunPrefab: {fileID: 316186400120179514, guid: b8678f54fe8fdb64a9fd39a2b7393c01,
+    type: 3}
+  RNG: 8
+  MachineGunPrefab: {fileID: 7855323577672263939, guid: 9eef910fcb2bc544295cfeb7fb5329b2,
+    type: 3}
+  RocketLauncherPrefab: {fileID: 131620116105913268, guid: dffc792d2460f0043aa7006a9e88ebc2,
+    type: 3}
 --- !u!1 &141810067153434151
 GameObject:
   m_ObjectHideFlags: 0

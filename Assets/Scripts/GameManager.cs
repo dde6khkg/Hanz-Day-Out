@@ -7,12 +7,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     bool GameEnded = false;
-    public float restartDelay = 2f;
-    public GameObject GameOverText;
+    public GameObject GameOver;
     //Next Room
     public int enemiesLeft;
-    //OpenDoor open;
     public GameObject door;
+    static int[] rooms = {2, 3, 4, 5};
+    static List<int> r = new List<int>(rooms);
 
     void FixedUpdate()
     {
@@ -30,28 +30,30 @@ public class GameManager : MonoBehaviour
         if(GameEnded == false)
         {
             GameEnded = true;
-            //GameOverText.SetActive(true);
+            Time.timeScale = 0;
 
-            Time.timeScale = 1;
-            StartCoroutine(Restart(restartDelay));
+            GameOver.SetActive(true);
         }
     }
 
     public void loadNextLevel()
     {
-        var rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
-        if(rng == SceneManager.GetActiveScene().name[6])
-            rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
-        if(rng == SceneManager.GetActiveScene().name[6])
-            rng = Random.Range(3, SceneManager.sceneCountInBuildSettings - 1);
+        var rng = Random.Range(0, r.Count);
 
         FindObjectOfType<PlayerMovement>().resetPos();
 
         if(SceneManager.GetActiveScene().name == "Test_Level")
             SceneManager.LoadScene("Test_Level");
+        else if(r.Count == 0)
+        {
+            SceneManager.LoadScene("Level_Boss");
+            r = new List<int>(rooms);
+        }
         else
         {
-            SceneManager.LoadScene(rng);
+            SceneManager.LoadScene("Level_" + r[rng]);
+
+            r.RemoveAt(rng);
         }
     }
 
@@ -63,14 +65,12 @@ public class GameManager : MonoBehaviour
 
         if(SceneManager.GetActiveScene().name == "Test_Level")
         {
-            //GameOverText.SetActive(false);
             SceneManager.LoadScene("Test_Level");
             Time.timeScale = 1;
         }
         else
         {
             Debug.Log("Restart...");
-            //GameOverText.SetActive(false);
             SceneManager.LoadScene("Level_1");
             FindObjectOfType<Enemy>().shootDelay(1f);
             Time.timeScale = 1;

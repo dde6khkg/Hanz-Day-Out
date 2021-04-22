@@ -53,10 +53,10 @@ public class PlayerMovement : MonoBehaviour
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
         //Test
-        if(Input.GetButtonDown("Jump"))
-        {
-            takeDamage(1);
-        }
+        //if(Input.GetButtonDown("Jump"))
+        //{
+            //takeDamage(1);
+        //}
     }
 
     void FixedUpdate()
