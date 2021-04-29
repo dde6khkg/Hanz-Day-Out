@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 0651c97e4c906e244ab63724dcb83e5e
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - get_lucky: {fileID: 8300000, guid: bfdc872fb6f507c4aa72dbf77684c524, type: 3}
+  - Sonic_Colors: {fileID: 8300000, guid: 4736c585de9eba249ad04085ff88cf66, type: 3}
+  - Terran_2: {fileID: 8300000, guid: 5cb3e2b5d6b22e745a20a07a85d968f4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

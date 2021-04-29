@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     //Moving
     public float nextMove;
     public Animator animator;
+    Enemy_Drops itemdrops;
 
     public Vector2 dir(float min, float max) {
         var x = Random.Range(min, max);
@@ -95,12 +96,21 @@ public class Enemy : MonoBehaviour
         nextFire = delay + Time.time;
     }
 
+    public void die()
+    {
+        Enemy_Drops sn = enemy.GetComponent<Enemy_Drops>();
+        sn.Dropitem();
+        Destroy(enemy);
+    }
+
     public void takeDamage(int damage)
     {
         currentHealth -= damage;
 
         if(currentHealth <= 0)
         {
+            Enemy_Drops sn = enemy.GetComponent<Enemy_Drops>();
+            sn.Dropitem();
             Destroy(enemy);
         }
     }

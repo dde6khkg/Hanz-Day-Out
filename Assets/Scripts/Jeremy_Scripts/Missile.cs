@@ -8,7 +8,7 @@ public class Missile : MonoBehaviour
     //public GameObject hitEffect;
     public Rigidbody2D rb;
     public int damage = 10;
-    public int aoe_radius = 1;
+    public int aoe_radius = 2;
     PlayerMovement player;
 
     void Start()
@@ -18,8 +18,6 @@ public class Missile : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //GameObject effect = Instantiate(hitEffect, transform.position, Quaternion.identity);
-        //Destroy(effect, 2f);
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -40,7 +38,7 @@ public class Missile : MonoBehaviour
     void MissileExplode()
     {
 
-        var hitColliders = Physics2D.OverlapCircleAll(transform.position, 1);
+        var hitColliders = Physics2D.OverlapCircleAll(transform.position, 5);
         foreach (var hitCollider in hitColliders)
         {
             var enemy = hitCollider.GetComponent<Enemy>();
@@ -62,7 +60,7 @@ public class Missile : MonoBehaviour
     {
         int splash;
 
-        splash = (aoe_radius * damage) / 4;
+        splash = (aoe_radius * damage) / 2;
 
         return splash;
 

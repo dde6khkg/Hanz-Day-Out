@@ -8,6 +8,7 @@ public class Shooting : MonoBehaviour
     public Transform firePoint;
     public GameObject bulletPrefab;
     public GameObject missilePrefab;
+    public GameObject bouncePrefab;
     public float bulletForce = 5f;
     Camera cam;
     Vector3 mousePos;
@@ -27,7 +28,7 @@ public class Shooting : MonoBehaviour
     {
         mousePos = cam.ScreenToWorldPoint(Input.mousePosition);
 
-        if(Input.GetButtonDown("Fire1") && Time.time > nextFire && Time.timeScale == 1f)
+        if(Input.GetButton("Fire1") && Time.time > nextFire && Time.timeScale == 1f)
         {
             Shoot();
             nextFire = Time.time + fireRate;
@@ -47,6 +48,16 @@ public class Shooting : MonoBehaviour
             bullet = Instantiate(missilePrefab, firePoint.position, firePoint.rotation) ;
             bulletForce = 15f;
         }
+        else if (Weapon == "Gun")
+        {
+            bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+            bulletForce = 20f;
+        }
+        else if (Weapon == "Bounce_Gun")
+        {
+           bullet = Instantiate(bouncePrefab, firePoint.position, firePoint.rotation);
+           bulletForce = 10f;
+        }
         else
         {
             bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
@@ -57,6 +68,6 @@ public class Shooting : MonoBehaviour
         rb.velocity = new Vector2(shootDir.x, shootDir.y).normalized * bulletForce;
 
 
-        Destroy(bullet, 4f);
+        //Destroy(bullet, 4f);
     }
 }
