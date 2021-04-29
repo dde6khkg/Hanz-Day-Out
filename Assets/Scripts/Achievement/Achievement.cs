@@ -16,15 +16,7 @@ public class Achievement : Observer
     {
         string key = "Achievement " + value;
         
-        if(PlayerPrefs.GetInt("Achievement 1") == 1)
-        {
-            Debug.Log("Here");
-            return;
-        }
-        else
-        {
-            PlayerPrefs.SetInt(key, 1);
-            Debug.Log("Unlocked " + key);
-        }
+        PlayerPrefs.SetInt(key, 1);
+        Debug.Log("Unlocked " + key);
     }
 }

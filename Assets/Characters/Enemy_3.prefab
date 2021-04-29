@@ -223,7 +223,7 @@ MonoBehaviour:
     type: 3}
   firePoint: {fileID: 8858587044098187253}
   bulletForce: 6
-  fireRate: 1
+  fireRate: 0.85
   nextFire: 0
   rb: {fileID: 8858587044392105384}
   fp: {fileID: 8858587044098187254}

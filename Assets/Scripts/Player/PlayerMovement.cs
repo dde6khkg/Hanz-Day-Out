@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     public GameObject canvas;
     public bool drbc = false;
 
-    // Start is called before the first frame update
     void Start()
     {
         drbc = false;
@@ -31,7 +30,6 @@ public class PlayerMovement : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
     }
 
-    // Update is called once per frame
     void Update()
     {
         movement.x = Input.GetAxisRaw("Horizontal");
@@ -59,7 +57,6 @@ public class PlayerMovement : MonoBehaviour
         //if(Input.GetButtonDown("Jump"))
         //{
             //takeDamage(1);
-            //Debug.Log(PlayerPrefs.GetInt("Achievement 1"));
         //}
     }
 
@@ -84,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
             currentHealth -= damage;
             healthBar.SetHealth(currentHealth);
         }
-
+        //Check if dead
         if(currentHealth <= 0)
         {
             Debug.Log("Dead...");
@@ -96,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake() 
     {
+        //Keep these between loads
         DontDestroyOnLoad(Player);
         DontDestroyOnLoad(Camera.main);
         DontDestroyOnLoad(canvas);
@@ -103,6 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void resetPos()
     {
+        //Resets position for loading next level
         rb.position = new Vector2(0f, -4.9f);
     }
 

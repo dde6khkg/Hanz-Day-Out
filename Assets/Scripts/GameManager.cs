@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
+        r = new List<int>(rooms);
+
         if(GameEnded == false)
         {
             GameEnded = true;
@@ -65,8 +67,8 @@ public class GameManager : MonoBehaviour
         {
             win = 0;
             FindObjectOfType<PlayerMovement>().Destroy();
-            SceneManager.LoadScene("Win");
             PlayerPrefs.DeleteAll();
+            SceneManager.LoadScene("Win");
         }
         else
         {
@@ -78,6 +80,8 @@ public class GameManager : MonoBehaviour
     public IEnumerator Restart(float delay)
     {
         yield return new WaitForSeconds(delay);
+        
+        r = new List<int>(rooms);
 
         GameEnded = false;
         PlayerPrefs.DeleteAll();
